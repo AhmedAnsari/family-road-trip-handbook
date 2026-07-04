@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canon Rebel T7 — Field Settings Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#1F3B2C;
+    --pine-deep:#152a1f;
+    --paper:#F5F1E6;
+    --paper-dim:#ECE6D6;
+    --ink:#24261F;
+    --ink-soft:#5B5A4E;
+    --rust:#BF5B2E;
+    --rust-deep:#8C3F1D;
+    --teal:#2E6E6B;
+    --teal-deep:#1D4A48;
+    --gold:#C9913D;
+    --line:#D8D1BC;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--pine-deep);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{
+    max-width:920px;
+    margin:0 auto;
+    background:var(--paper);
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .display{font-family:'Fraunces',serif;}
+
+  /* ---------- COVER ---------- */
+  .cover{
+    background:var(--pine);
+    color:var(--paper);
+    padding:72px 56px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cover::before{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:120px;
+    background:repeating-linear-gradient(
+      to right,
+      transparent 0px, transparent 38px,
+      rgba(245,241,230,0.06) 38px, rgba(245,241,230,0.06) 39px
+    );
+  }
+  .cover-eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:#B7CDBE;
+    margin-bottom:18px;
+  }
+  .cover h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:52px;
+    line-height:1.05;
+    margin:0 0 14px;
+    max-width:640px;
+  }
+  .cover h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:#D9A97B;
+  }
+  .cover p.sub{
+    font-size:16px;
+    color:#CBD9CD;
+    max-width:500px;
+    line-height:1.6;
+    margin:0 0 40px;
+  }
+  .cover-stats{
+    display:flex;
+    gap:36px;
+    flex-wrap:wrap;
+    position:relative;
+    z-index:1;
+  }
+  .cover-stat .n{
+    font-family:'Fraunces',serif;
+    font-size:30px;
+    font-weight:600;
+    color:var(--paper);
+  }
+  .cover-stat .l{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#9EB6A5;
+  }
+
+  /* ---------- QUICK REF STRIP ---------- */
+  .qref{
+    display:flex;
+    gap:0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .qref-cell{
+    flex:1;
+    padding:18px 22px;
+    border-right:1px solid var(--line);
+  }
+  .qref-cell:last-child{border-right:none;}
+  .qref-cell .k{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    display:block;
+    margin-bottom:4px;
+  }
+  .qref-cell .v{
+    font-family:'Fraunces',serif;
+    font-size:16px;
+    font-weight:500;
+  }
+
+  /* ---------- SECTION HEADER ---------- */
+  .sec-head{
+    background:var(--pine);
+    color:var(--paper);
+    padding:34px 56px 26px;
+  }
+  .sec-head .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:#B7CDBE;
+    margin-bottom:8px;
+    display:block;
+  }
+  .sec-head h2{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:30px;
+    margin:0;
+    line-height:1.1;
+  }
+
+  /* ---------- SCENE CARDS ---------- */
+  .scenes{
+    padding:32px 56px 40px;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+  }
+  .scene-card{
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .scene-head{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:18px 24px;
+    background:var(--paper-dim);
+    border-bottom:1px solid var(--line);
+  }
+  .scene-icon{
+    font-size:26px;
+    line-height:1;
+    flex-shrink:0;
+  }
+  .scene-name{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:20px;
+    color:var(--ink);
+    margin:0;
+  }
+  .scene-badge{
+    margin-left:auto;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:4px 10px;
+    border-radius:2px;
+    flex-shrink:0;
+  }
+  .badge-av{ background:#DDF0E6; color:#1D5C3A; }
+  .badge-tv{ background:#E0EEF5; color:#1A4A65; }
+  .badge-m{  background:#F5E8D8; color:#7A3B10; }
+  .badge-p{  background:#F0EDD8; color:#5A4E10; }
+
+  .scene-body{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:0;
+  }
+  .setting-group{
+    padding:20px 24px;
+    border-right:1px solid var(--line);
+  }
+  .setting-group:last-child{border-right:none;}
+  .sg-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+    display:block;
+  }
+  .setting-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:5px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .setting-row:last-child{border-bottom:none;}
+  .sr-key{
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .sr-val{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    font-weight:500;
+    color:var(--teal-deep);
+  }
+  .sr-val.warn{ color:var(--rust-deep); }
+
+  .scene-tip{
+    padding:12px 24px;
+    background:#F8F5EC;
+    border-top:1px solid var(--line);
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.55;
+  }
+  .scene-tip strong{
+    color:var(--ink);
+    font-weight:600;
+  }
+
+  /* ---------- CONCEPT SECTION ---------- */
+  .concepts{
+    padding:32px 56px 40px;
+  }
+  .concept-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-top:8px;
+  }
+  .concept-card{
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:20px 22px;
+  }
+  .concept-card h3{
+    font-family:'Fraunces',serif;
+    font-size:17px;
+    font-weight:600;
+    margin:0 0 6px;
+    color:var(--ink);
+  }
+  .concept-card p{
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    margin:0 0 10px;
+  }
+  .exposure-triangle{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:8px;
+    font-size:12px;
+  }
+  .exposure-triangle th{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    padding:6px 8px;
+    text-align:left;
+    border-bottom:1px solid var(--line);
+  }
+  .exposure-triangle td{
+    padding:6px 8px;
+    border-bottom:1px dashed var(--line);
+    vertical-align:top;
+    line-height:1.4;
+  }
+  .exposure-triangle tr:last-child td{border-bottom:none;}
+  .exposure-triangle td:first-child{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    font-weight:500;
+    color:var(--teal-deep);
+    white-space:nowrap;
+  }
+
+  /* mode pills */
+  .mode-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+  }
+  .mode-pill{
+    border-radius:3px;
+    padding:6px 12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    font-weight:500;
+  }
+  .pill-green{ background:#DDF0E6; color:#1D5C3A; }
+  .pill-blue{  background:#E0EEF5; color:#1A4A65; }
+  .pill-orange{background:#F5E8D8; color:#7A3B10; }
+  .pill-tan{   background:#F0EDD8; color:#5A4E10; }
+
+  /* ---------- CHECKLIST ---------- */
+  .checklist-section{
+    padding:32px 56px 40px;
+    border-top:8px solid var(--pine-deep);
+  }
+  .checklist-section h2{
+    font-family:'Fraunces',serif;
+    font-size:24px;
+    font-weight:600;
+    margin:0 0 18px;
+    color:var(--ink);
+  }
+  .checklist{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .checklist li{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    font-size:14px;
+    padding:8px 12px;
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+    border-radius:3px;
+    line-height:1.4;
+  }
+  .checklist li::before{
+    content:"☐";
+    font-size:16px;
+    color:var(--ink-soft);
+    flex-shrink:0;
+    line-height:1;
+    margin-top:1px;
+  }
+
+  /* ---------- DIVIDER ---------- */
+  .scene-divider{
+    border:none;
+    height:8px;
+    background:var(--pine-deep);
+    margin:0;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer{
+    background:var(--pine);
+    color:#9EB6A5;
+    padding:28px 56px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  @media(max-width:680px){
+    .cover{padding:48px 24px 40px;}
+    .cover h1{font-size:36px;}
+    .scenes{padding:20px 16px 28px;}
+    .scene-body{grid-template-columns:1fr;}
+    .setting-group{border-right:none; border-bottom:1px solid var(--line);}
+    .setting-group:last-child{border-bottom:none;}
+    .concepts{padding:20px 16px 28px;}
+    .concept-grid{grid-template-columns:1fr;}
+    .checklist-section{padding:20px 16px 28px;}
+    .checklist{grid-template-columns:1fr;}
+    .qref{flex-wrap:wrap;}
+    .qref-cell{flex:1 1 48%; border-bottom:1px solid var(--line);}
+    .footer{padding:20px 16px; flex-direction:column; gap:8px; text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-eyebrow">Field Settings Handbook &nbsp;·&nbsp; Summer 2026</div>
+    <h1>Canon Rebel T7<br><em>Quick-Shot Guide</em></h1>
+    <p class="sub">Scene-by-scene camera settings for Lassen, Crater Lake, McCloud Falls, and everything in between. Dial in and shoot — no guessing.</p>
+    <div class="cover-stats">
+      <div class="cover-stat"><div class="n">24 MP</div><div class="l">APS-C Sensor</div></div>
+      <div class="cover-stat"><div class="n">9</div><div class="l">AF Points</div></div>
+      <div class="cover-stat"><div class="n">ISO 100–6400</div><div class="l">Native Range</div></div>
+      <div class="cover-stat"><div class="n">18-55 mm</div><div class="l">Kit Lens Range</div></div>
+    </div>
+  </div>
+
+  <!-- QUICK REFERENCE STRIP -->
+  <div class="qref">
+    <div class="qref-cell">
+      <span class="k">Dial for Landscapes</span>
+      <span class="v">Av mode · f/8</span>
+    </div>
+    <div class="qref-cell">
+      <span class="k">Dial for Moving Kids</span>
+      <span class="v">Tv mode · 1/500s+</span>
+    </div>
+    <div class="qref-cell">
+      <span class="k">Dial for Low Light</span>
+      <span class="v">Av · f/5.6 · ISO 800+</span>
+    </div>
+    <div class="qref-cell">
+      <span class="k">Always-On Settings</span>
+      <span class="v">RAW · IS On · AI Servo</span>
+    </div>
+  </div>
+
+  <!-- ========== SECTION 1: SCENE CARDS ========== -->
+  <div class="sec-head">
+    <span class="tag">Section 01</span>
+    <h2>Scene-by-Scene Settings</h2>
+  </div>
+
+  <div class="scenes">
+
+    <!-- SCENE: Bright Landscape -->
+    <div class="scene-card">
+      <div class="scene-head">
+        <div class="scene-icon">🏔</div>
+        <h3 class="scene-name">Bright Landscape — Mountains, Lake Rims, Open Sky</h3>
+        <span class="scene-badge badge-av">Av Mode</span>
+      </div>
+      <div class="scene-body">
+        <div class="setting-group">
+          <span class="sg-label">Exposure</span>
+          <div class="setting-row"><span class="sr-key">Mode</span><span class="sr-val">Av</span></div>
+          <div class="setting-row"><span class="sr-key">Aperture</span><span class="sr-val">f/8 – f/11</span></div>
+          <div class="setting-row"><span class="sr-key">ISO</span><span class="sr-val">100</span></div>
+          <div class="setting-row"><span class="sr-key">Shutter</span><span class="sr-val">Camera picks</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Focus &amp; Drive</span>
+          <div class="setting-row"><span class="sr-key">AF Mode</span><span class="sr-val">One Shot</span></div>
+          <div class="setting-row"><span class="sr-key">AF Point</span><span class="sr-val">Center</span></div>
+          <div class="setting-row"><span class="sr-key">Drive</span><span class="sr-val">Single</span></div>
+          <div class="setting-row"><span class="sr-key">IS</span><span class="sr-val">On (Mode 1)</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Image</span>
+          <div class="setting-row"><span class="sr-key">Format</span><span class="sr-val">RAW</span></div>
+          <div class="setting-row"><span class="sr-key">WB</span><span class="sr-val">Daylight</span></div>
+          <div class="setting-row"><span class="sr-key">Metering</span><span class="sr-val">Evaluative</span></div>
+          <div class="setting-row"><span class="sr-key">Exp. Comp.</span><span class="sr-val">0 to −1/3</span></div>
+        </div>
+      </div>
+      <div class="scene-tip"><strong>Why f/8:</strong> sharpest corner-to-corner on the kit lens. If the sky is blown out, dial −1/3 exposure comp. For Crater Lake's deep blue, shoot with the sun behind you. At Lassen, expose for the volcanic rock — sky will take care of itself.</div>
+    </div>
+
+    <!-- SCENE: Waterfall -->
+    <div class="scene-card">
+      <div class="scene-head">
+        <div class="scene-icon">💧</div>
+        <h3 class="scene-name">Waterfall — Burney Falls · McCloud Falls</h3>
+        <span class="scene-badge badge-tv">Tv Mode</span>
+      </div>
+      <div class="scene-body">
+        <div class="setting-group">
+          <span class="sg-label">Silky Water Look</span>
+          <div class="setting-row"><span class="sr-key">Mode</span><span class="sr-val">Tv</span></div>
+          <div class="setting-row"><span class="sr-key">Shutter</span><span class="sr-val">1/4 – 1/2 s</span></div>
+          <div class="setting-row"><span class="sr-key">ISO</span><span class="sr-val">100</span></div>
+          <div class="setting-row"><span class="sr-key">Aperture</span><span class="sr-val">Camera picks</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Frozen Drops Look</span>
+          <div class="setting-row"><span class="sr-key">Mode</span><span class="sr-val">Tv</span></div>
+          <div class="setting-row"><span class="sr-key">Shutter</span><span class="sr-val">1/500 s</span></div>
+          <div class="setting-row"><span class="sr-key">ISO</span><span class="sr-val">400–800</span></div>
+          <div class="setting-row"><span class="sr-key">Aperture</span><span class="sr-val">Camera picks</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Stabilization</span>
+          <div class="setting-row"><span class="sr-key">Tripod?</span><span class="sr-val warn">Required (silky)</span></div>
+          <div class="setting-row"><span class="sr-key">IS</span><span class="sr-val">Off if tripod</span></div>
+          <div class="setting-row"><span class="sr-key">Drive</span><span class="sr-val">2 s Timer</span></div>
+          <div class="setting-row"><span class="sr-key">AF Mode</span><span class="sr-val">One Shot</span></div>
+        </div>
+      </div>
+      <div class="scene-tip"><strong>No tripod?</span> Brace against a railing or rock and use 1/60 s minimum to avoid camera shake — you'll get partial blur without being blurry yourself. Burney Falls is shaded so ISO 400 is often needed even midday. Turn IS <em>off</em> when the camera is on a tripod — it fights itself and adds blur.</div>
+    </div>
+
+    <!-- SCENE: Kids Outdoors -->
+    <div class="scene-card">
+      <div class="scene-head">
+        <div class="scene-icon">🧒</div>
+        <h3 class="scene-name">Kids Moving — Outdoor Play, Running, Splashing</h3>
+        <span class="scene-badge badge-tv">Tv Mode</span>
+      </div>
+      <div class="scene-body">
+        <div class="setting-group">
+          <span class="sg-label">Exposure</span>
+          <div class="setting-row"><span class="sr-key">Mode</span><span class="sr-val">Tv</span></div>
+          <div class="setting-row"><span class="sr-key">Shutter</span><span class="sr-val">1/500 – 1/800 s</span></div>
+          <div class="setting-row"><span class="sr-key">ISO</span><span class="sr-val">Auto (max 1600)</span></div>
+          <div class="setting-row"><span class="sr-key">Aperture</span><span class="sr-val">Camera picks</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Focus &amp; Drive</span>
+          <div class="setting-row"><span class="sr-key">AF Mode</span><span class="sr-val">AI Servo</span></div>
+          <div class="setting-row"><span class="sr-key">AF Point</span><span class="sr-val">Center or Auto</span></div>
+          <div class="setting-row"><span class="sr-key">Drive</span><span class="sr-val">Continuous (H)</span></div>
+          <div class="setting-row"><span class="sr-key">IS</span><span class="sr-val">On (Mode 1)</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Tips</span>
+          <div class="setting-row"><span class="sr-key">Metering</span><span class="sr-val">Evaluative</span></div>
+          <div class="setting-row"><span class="sr-key">Exp. Comp.</span><span class="sr-val">+1/3 (faces)</span></div>
+          <div class="setting-row"><span class="sr-key">Zoom</span><span class="sr-val">35–55 mm</span></div>
+          <div class="setting-row"><span class="sr-key">Format</span><span class="sr-val">RAW+JPEG</span></div>
+        </div>
+      </div>
+      <div class="scene-tip"><strong>AI Servo is the key:</strong> hold the shutter half-pressed while tracking the kid, let the camera keep refocusing, then burst when the moment peaks. Set Auto ISO with a max of 1600 so you don't have to think about it while chasing a 4-year-old. +1/3 exposure comp keeps faces from going dark against bright sky.</div>
+    </div>
+
+    <!-- SCENE: Golden Hour / Sunset Portrait -->
+    <div class="scene-card">
+      <div class="scene-head">
+        <div class="scene-icon">🌅</div>
+        <h3 class="scene-name">Golden Hour — Sunset Family Portraits</h3>
+        <span class="scene-badge badge-av">Av Mode</span>
+      </div>
+      <div class="scene-body">
+        <div class="setting-group">
+          <span class="sg-label">Exposure</span>
+          <div class="setting-row"><span class="sr-key">Mode</span><span class="sr-val">Av</span></div>
+          <div class="setting-row"><span class="sr-key">Aperture</span><span class="sr-val">f/4 – f/5.6</span></div>
+          <div class="setting-row"><span class="sr-key">ISO</span><span class="sr-val">200 – 400</span></div>
+          <div class="setting-row"><span class="sr-key">Shutter</span><span class="sr-val">Camera picks</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Focus &amp; Drive</span>
+          <div class="setting-row"><span class="sr-key">AF Mode</span><span class="sr-val">One Shot</span></div>
+          <div class="setting-row"><span class="sr-key">AF Point</span><span class="sr-val">Center on face</span></div>
+          <div class="setting-row"><span class="sr-key">Drive</span><span class="sr-val">Single</span></div>
+          <div class="setting-row"><span class="sr-key">IS</span><span class="sr-val">On</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Image</span>
+          <div class="setting-row"><span class="sr-key">WB</span><span class="sr-val">Cloudy (warm)</span></div>
+          <div class="setting-row"><span class="sr-key">Metering</span><span class="sr-val">Spot (on face)</span></div>
+          <div class="setting-row"><span class="sr-key">Exp. Comp.</span><span class="sr-val">+1/3 to +2/3</span></div>
+          <div class="setting-row"><span class="sr-key">Zoom</span><span class="sr-val">50–55 mm</span></div>
+        </div>
+      </div>
+      <div class="scene-tip"><strong>Position people with the sun behind and to the side</strong> — they get a warm rim light and their faces are easy to expose. WB "Cloudy" adds warmth even if the sky is clear. Spot metering on the face ensures correct skin exposure even if the background is bright. Work fast — golden hour lasts ~20 min.</div>
+    </div>
+
+    <!-- SCENE: Overcast / Forest Shade -->
+    <div class="scene-card">
+      <div class="scene-head">
+        <div class="scene-icon">☁️</div>
+        <h3 class="scene-name">Overcast / Forest Shade — Even, Soft Light</h3>
+        <span class="scene-badge badge-av">Av Mode</span>
+      </div>
+      <div class="scene-body">
+        <div class="setting-group">
+          <span class="sg-label">Exposure</span>
+          <div class="setting-row"><span class="sr-key">Mode</span><span class="sr-val">Av</span></div>
+          <div class="setting-row"><span class="sr-key">Aperture</span><span class="sr-val">f/4 – f/5.6</span></div>
+          <div class="setting-row"><span class="sr-key">ISO</span><span class="sr-val">400 – 800</span></div>
+          <div class="setting-row"><span class="sr-key">Shutter</span><span class="sr-val">Camera picks</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Focus &amp; Drive</span>
+          <div class="setting-row"><span class="sr-key">AF Mode</span><span class="sr-val">One Shot</span></div>
+          <div class="setting-row"><span class="sr-key">AF Point</span><span class="sr-val">Center</span></div>
+          <div class="setting-row"><span class="sr-key">Drive</span><span class="sr-val">Single</span></div>
+          <div class="setting-row"><span class="sr-key">IS</span><span class="sr-val">On</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Image</span>
+          <div class="setting-row"><span class="sr-key">WB</span><span class="sr-val">Cloudy</span></div>
+          <div class="setting-row"><span class="sr-key">Metering</span><span class="sr-val">Evaluative</span></div>
+          <div class="setting-row"><span class="sr-key">Exp. Comp.</span><span class="sr-val">+1/3</span></div>
+          <div class="setting-row"><span class="sr-key">Format</span><span class="sr-val">RAW</span></div>
+        </div>
+      </div>
+      <div class="scene-tip"><strong>Overcast is actually ideal for portraits</strong> — no harsh shadows on faces. The catch is that shutter speed can drop below 1/60 s; if the camera picks anything slower than 1/80 s, bump ISO up one stop. WB "Cloudy" prevents the bluish-grey cast that "Auto WB" produces under thick clouds.</div>
+    </div>
+
+    <!-- SCENE: Night / Stars -->
+    <div class="scene-card">
+      <div class="scene-head">
+        <div class="scene-icon">🌌</div>
+        <h3 class="scene-name">Night Sky / Stars — Lassen Dark Sky Area</h3>
+        <span class="scene-badge badge-m">M Mode</span>
+      </div>
+      <div class="scene-body">
+        <div class="setting-group">
+          <span class="sg-label">Exposure</span>
+          <div class="setting-row"><span class="sr-key">Mode</span><span class="sr-val">M (Manual)</span></div>
+          <div class="setting-row"><span class="sr-key">Aperture</span><span class="sr-val warn">f/3.5 (max open)</span></div>
+          <div class="setting-row"><span class="sr-key">Shutter</span><span class="sr-val">20 – 25 s</span></div>
+          <div class="setting-row"><span class="sr-key">ISO</span><span class="sr-val">1600 – 3200</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Focus &amp; Drive</span>
+          <div class="setting-row"><span class="sr-key">AF</span><span class="sr-val warn">Off — use MF</span></div>
+          <div class="setting-row"><span class="sr-key">Focus</span><span class="sr-val">Infinity (∞)</span></div>
+          <div class="setting-row"><span class="sr-key">Drive</span><span class="sr-val">2 s Timer</span></div>
+          <div class="setting-row"><span class="sr-key">IS</span><span class="sr-val warn">Off</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Setup</span>
+          <div class="setting-row"><span class="sr-key">Tripod</span><span class="sr-val warn">Required</span></div>
+          <div class="setting-row"><span class="sr-key">WB</span><span class="sr-val">3200 K (manual)</span></div>
+          <div class="setting-row"><span class="sr-key">Format</span><span class="sr-val">RAW</span></div>
+          <div class="setting-row"><span class="sr-key">Zoom</span><span class="sr-val">18 mm (wide)</span></div>
+        </div>
+      </div>
+      <div class="scene-tip"><strong>500 Rule for sharp stars:</strong> 500 ÷ 18 mm ≈ 27 s max before stars trail — keep at 20–25 s to be safe. Focus at infinity by turning the lens to ∞ mark, or zoom into Live View on a bright star and manually focus until it's a tight dot. ISO 3200 will show noise but RAW files clean up well in Lightroom. Lassen NP has almost zero light pollution — worth the setup.</div>
+    </div>
+
+    <!-- SCENE: Indoor / Low Light -->
+    <div class="scene-card">
+      <div class="scene-head">
+        <div class="scene-icon">🏨</div>
+        <h3 class="scene-name">Indoor / Low Light — Cabin, Restaurant, Evening</h3>
+        <span class="scene-badge badge-av">Av Mode</span>
+      </div>
+      <div class="scene-body">
+        <div class="setting-group">
+          <span class="sg-label">Exposure</span>
+          <div class="setting-row"><span class="sr-key">Mode</span><span class="sr-val">Av</span></div>
+          <div class="setting-row"><span class="sr-key">Aperture</span><span class="sr-val">f/3.5 – f/4</span></div>
+          <div class="setting-row"><span class="sr-key">ISO</span><span class="sr-val">800 – 3200</span></div>
+          <div class="setting-row"><span class="sr-key">Shutter</span><span class="sr-val">min 1/80 s</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Focus &amp; Drive</span>
+          <div class="setting-row"><span class="sr-key">AF Mode</span><span class="sr-val">One Shot</span></div>
+          <div class="setting-row"><span class="sr-key">AF Point</span><span class="sr-val">Center</span></div>
+          <div class="setting-row"><span class="sr-key">AF Assist</span><span class="sr-val">On (built-in)</span></div>
+          <div class="setting-row"><span class="sr-key">IS</span><span class="sr-val">On</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Flash</span>
+          <div class="setting-row"><span class="sr-key">Built-in Flash</span><span class="sr-val">Last resort</span></div>
+          <div class="setting-row"><span class="sr-key">Flash Comp.</span><span class="sr-val">−1 to −2</span></div>
+          <div class="setting-row"><span class="sr-key">WB</span><span class="sr-val">Auto or Tungsten</span></div>
+          <div class="setting-row"><span class="sr-key">Metering</span><span class="sr-val">Evaluative</span></div>
+        </div>
+      </div>
+      <div class="scene-tip"><strong>Avoid the built-in flash if you can</strong> — it produces flat, harsh light and red-eye on kids. Instead, push ISO to 1600–3200 and open the aperture fully. If you must use flash, dial it down to −1 EV so it fills shadows rather than blasting. Check the shot after each frame — LCD looks brighter than the actual file in dim rooms.</div>
+    </div>
+
+    <!-- SCENE: 9-Month-Old / Infant -->
+    <div class="scene-card">
+      <div class="scene-head">
+        <div class="scene-icon">👶</div>
+        <h3 class="scene-name">Infant Close-Ups — 9-Month-Old in Wagon / Arms</h3>
+        <span class="scene-badge badge-av">Av Mode</span>
+      </div>
+      <div class="scene-body">
+        <div class="setting-group">
+          <span class="sg-label">Exposure</span>
+          <div class="setting-row"><span class="sr-key">Mode</span><span class="sr-val">Av</span></div>
+          <div class="setting-row"><span class="sr-key">Aperture</span><span class="sr-val">f/4 – f/5.6</span></div>
+          <div class="setting-row"><span class="sr-key">ISO</span><span class="sr-val">100–400</span></div>
+          <div class="setting-row"><span class="sr-key">Shutter</span><span class="sr-val">watch for 1/200+</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Focus &amp; Drive</span>
+          <div class="setting-row"><span class="sr-key">AF Mode</span><span class="sr-val">AI Servo</span></div>
+          <div class="setting-row"><span class="sr-key">AF Point</span><span class="sr-val">Center on eyes</span></div>
+          <div class="setting-row"><span class="sr-key">Drive</span><span class="sr-val">Continuous (H)</span></div>
+          <div class="setting-row"><span class="sr-key">IS</span><span class="sr-val">On</span></div>
+        </div>
+        <div class="setting-group">
+          <span class="sg-label">Framing</span>
+          <div class="setting-row"><span class="sr-key">Zoom</span><span class="sr-val">35–55 mm</span></div>
+          <div class="setting-row"><span class="sr-key">Min. focus dist.</span><span class="sr-val">~0.28 m</span></div>
+          <div class="setting-row"><span class="sr-key">Exp. Comp.</span><span class="sr-val">+1/3 (bright face)</span></div>
+          <div class="setting-row"><span class="sr-key">Flash</span><span class="sr-val warn">Off — never</span></div>
+        </div>
+      </div>
+      <div class="scene-tip"><strong>Never flash at the baby</strong> — the 18-55 kit lens focuses as close as 28 cm, which is plenty for face shots. Use AI Servo even if the baby looks still — heads move unpredictably. Keep shutter above 1/200 s outdoors (babies wave arms faster than you think). Aim for eyes-in-focus even if the rest is slightly soft.</div>
+    </div>
+
+  </div><!-- /scenes -->
+
+  <hr class="scene-divider">
+
+  <!-- ========== SECTION 2: CORE CONCEPTS ========== -->
+  <div class="sec-head">
+    <span class="tag">Section 02</span>
+    <h2>Core Concepts — What Each Setting Actually Does</h2>
+  </div>
+
+  <div class="concepts">
+    <div class="concept-grid">
+
+      <div class="concept-card">
+        <h3>The Exposure Triangle</h3>
+        <p>Three settings, all trading off against each other to control how bright the photo is.</p>
+        <table class="exposure-triangle">
+          <tr><th>Setting</th><th>Controls</th><th>Side effect of going higher</th></tr>
+          <tr><td>ISO</td><td>Sensor sensitivity</td><td>More grain (noise)</td></tr>
+          <tr><td>Aperture (f/)</td><td>Lens opening size — lower f/ = more light</td><td>Less in focus (shallower depth)</td></tr>
+          <tr><td>Shutter</td><td>How long sensor sees light</td><td>Motion blur if too slow</td></tr>
+        </table>
+      </div>
+
+      <div class="concept-card">
+        <h3>Dial Modes on the T7</h3>
+        <p>You only need four — ignore the rest.</p>
+        <div class="mode-pills">
+          <span class="mode-pill pill-blue"><strong>Tv</strong> — you pick shutter, camera picks aperture. Use for motion.</span>
+          <span class="mode-pill pill-green"><strong>Av</strong> — you pick aperture, camera picks shutter. Use for landscapes &amp; portraits.</span>
+          <span class="mode-pill pill-orange"><strong>M</strong> — you pick everything. Use for night/stars.</span>
+          <span class="mode-pill pill-tan"><strong>P</strong> — camera picks both. Use when something's happening fast and you can't think.</span>
+        </div>
+      </div>
+
+      <div class="concept-card">
+        <h3>AF Modes Explained</h3>
+        <p>Two modes matter for this trip:</p>
+        <table class="exposure-triangle">
+          <tr><th>Mode</th><th>When to use</th></tr>
+          <tr><td>One Shot</td><td>Stationary subjects — landscapes, still portraits, waterfalls. Locks focus when you half-press and stays locked.</td></tr>
+          <tr><td>AI Servo</td><td>Moving subjects — kids running, animals, anything unpredictable. Camera tracks continuously while you hold the shutter half-pressed.</td></tr>
+        </table>
+      </div>
+
+      <div class="concept-card">
+        <h3>Image Stabilization (IS)</h3>
+        <p>The kit lens has IS built in. Simple rules:</p>
+        <table class="exposure-triangle">
+          <tr><th>Situation</th><th>IS Setting</th></tr>
+          <tr><td>Handheld — anything</td><td>On, Mode 1</td></tr>
+          <tr><td>On a tripod</td><td>Off — IS detects fake movement and adds blur</td></tr>
+          <tr><td>Panning (tracking a moving subject)</td><td>On, Mode 2 (if available on your firmware)</td></tr>
+        </table>
+      </div>
+
+      <div class="concept-card">
+        <h3>RAW vs JPEG</h3>
+        <p>RAW saves all sensor data — more editing latitude for exposure and white balance in Lightroom. JPEG is smaller and processed in-camera. For this trip:</p>
+        <table class="exposure-triangle">
+          <tr><th>Format</th><th>Best for</th></tr>
+          <tr><td>RAW</td><td>Landscapes, night sky, anything you plan to edit or print</td></tr>
+          <tr><td>JPEG L (Fine)</td><td>Quick share, kid burst shots where you'll pick 3 of 20</td></tr>
+          <tr><td>RAW+JPEG</td><td>Moving kids — burst in JPEG, keep the winners as RAW</td></tr>
+        </table>
+      </div>
+
+      <div class="concept-card">
+        <h3>Exposure Compensation (+/−)</h3>
+        <p>The quickest fix in Av or Tv mode. Press the Av +/− button and spin the wheel.</p>
+        <table class="exposure-triangle">
+          <tr><th>Situation</th><th>Try</th></tr>
+          <tr><td>Subject looks dark against bright sky</td><td>+1/3 to +1</td></tr>
+          <tr><td>Sky is blown white or very bright</td><td>−1/3 to −2/3</td></tr>
+          <tr><td>Snow or white sand looks grey</td><td>+1 to +2</td></tr>
+          <tr><td>Night / low light scene looks washed</td><td>−1</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="scene-divider">
+
+  <!-- ========== SECTION 3: PRE-SHOOT CHECKLIST ========== -->
+  <div class="checklist-section">
+    <h2>Pre-Shoot Checklist</h2>
+    <ul class="checklist">
+      <li>Battery charged (and spare battery in bag)</li>
+      <li>SD card formatted and empty</li>
+      <li>Lens cap off — IS on</li>
+      <li>Image quality set to RAW (or RAW+JPEG for action)</li>
+      <li>Date &amp; time correct for geo-tagging</li>
+      <li>Diopter eyepiece adjusted for your eye</li>
+      <li>Auto power-off set to 1–2 min (saves battery)</li>
+      <li>Custom function: Mirror lockup for tripod shots</li>
+      <li>Sensor clean check — look at clear blue sky at f/16</li>
+      <li>Lens clean — check front element for smudges</li>
+      <li>Test shot and histogram review before starting</li>
+      <li>Flash popped down (unless needed)</li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Canon EOS Rebel T7 &nbsp;·&nbsp; 18-55 mm IS II Kit</span>
+    <span>Family Road Trip &nbsp;·&nbsp; Summer 2026</span>
+  </div>
+
+</div><!-- /sheet -->
+</body>
+</html>
